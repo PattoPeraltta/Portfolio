@@ -20,7 +20,7 @@ const Index = () => {
     // Glitch effect for name
     const glitchInterval = setInterval(() => {
       const glitchChars = "!@#$%^&*()[]{}|;:,.<>?";
-      const original = "[YOUR_NAME]";
+      const original = "Patricio Jaime";
       let glitched = "";
       
       for (let i = 0; i < original.length; i++) {
@@ -59,22 +59,22 @@ const Index = () => {
 
   const projects = [
     {
-      title: "Project Alpha",
+      title: "Certo",
       description: "Modern web application with real-time features",
       tech: ["React", "TypeScript", "WebSocket"],
-      status: "LIVE"
+      status: "BETA"
     },
     {
-      title: "Project Beta", 
+      title: "Ripe", 
       description: "High-performance API with microservices architecture",
       tech: ["Node.js", "Docker", "Redis"],
-      status: "DEV"
+      status: "ALPHA"
     },
     {
-      title: "Project Gamma",
+      title: "Buddy",
       description: "Machine learning pipeline for data processing",
       tech: ["Python", "TensorFlow", "AWS"],
-      status: "BETA"
+      status: "DEV"
     }
   ];
 
@@ -124,7 +124,7 @@ const Index = () => {
           <div className="w-3 h-3 bg-red-400 rounded-full hover:scale-125 transition-transform cursor-pointer"></div>
           <div className="w-3 h-3 bg-yellow-400 rounded-full hover:scale-125 transition-transform cursor-pointer"></div>
           <div className="w-3 h-3 bg-green-400 rounded-full hover:scale-125 transition-transform cursor-pointer"></div>
-          <span className="ml-4 text-cyan-400">developer@portfolio:~$</span>
+          <span className="ml-4 text-cyan-400">patojaime@developer:~$</span>
           <span className="animate-pulse text-cyan-400">|</span>
         </div>
         <div className="absolute right-4 top-4 text-xs text-gray-500">
@@ -337,7 +337,7 @@ const Index = () => {
                 onClick={() => addTerminalLine("send_email()")}
               >
                 <Mail className="mr-2 h-4 w-4" />
-                your.email@domain.com
+                patricioperaltarg@domain.com
               </Button>
               <Button 
                 variant="outline" 
@@ -368,7 +368,7 @@ const Index = () => {
           </div>
           
           <div className="text-cyan-400 text-sm">
-            <span>developer@portfolio:~$ </span>
+            <span>patriciojaime@portfolio:~$ </span>
             <span className="animate-pulse">_</span>
           </div>
         </div>
