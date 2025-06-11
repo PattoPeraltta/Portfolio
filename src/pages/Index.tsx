@@ -7,6 +7,8 @@ import { SplineSceneBasic } from "@/components/ui/spline-demo";
 import SpotlightCard from '@/components/ui/SpotlightCard';
 import TextPressure from '@/components/ui/TextPressure';
 import SplashCursor from '@/components/ui/SplashCursor'
+import Squares from '@/components/ui/Squares'
+import FuzzyText from '@/components/ui/FuzzyText'
 
 
 const Index = () => {
@@ -85,22 +87,25 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black text-gray-100 font-mono relative overflow-hidden">
-      {showSplashCursor && <SplashCursor />}
       {/* Splash Screen */}
       <div className="h-screen w-full flex items-center justify-center bg-black relative">
+      <Squares />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <TextPressure
-            text="PATRICIO JAIME PERALTA RAMOS GUERRERO"
+            text="PATRICIO"
             flex={true}
             alpha={false}
             stroke={false}
             width={true}
             weight={true}
             italic={true}
-            textColor="#f325af"
+            textColor="#ffffff"
             strokeColor="#ff0000"
-            minFontSize={100}
+            minFontSize={200}
           />
+          {/* <FuzzyText>
+            PATRICIO JAIME
+          </FuzzyText> */}
         </div>
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <svg className="w-6 h-6 text-[#f325af]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -132,13 +137,13 @@ const Index = () => {
                   
                   <div className="pl-4 border-l border-[#f325af] mb-8 space-y-2">
                     <p className="text-lg text-gray-300 hover:text-[#f325af] transition-colors cursor-default">
-                      &gt; Full Stack Developer
+                      &gt; Bsc Digital Technology 
                     </p>
                     <p className="text-lg text-gray-300 hover:text-[#f325af] transition-colors cursor-default">
                       &gt; Problem Solver
                     </p>
                     <p className="text-lg text-gray-300 hover:text-[#f325af] transition-colors cursor-default">
-                      &gt; Tech Enthusiast
+                      &gt; Full Stack Developer
                     </p>
                   </div>
 
