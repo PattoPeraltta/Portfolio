@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Mail, Github, Linkedin, ExternalLink, MapPin, Calendar, ArrowRight, Code, Terminal, Cpu, Zap } from "lucide-react";
+import { SplineSceneBasic } from "@/components/ui/spline-demo";
+import SplashCursor from '@/components/ui/SplashCursor'
+
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [glitchText, setGlitchText] = useState("[YOUR_NAME]");
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [terminalLines, setTerminalLines] = useState([
     "$ initializing portfolio...",
     "$ loading user data...",
@@ -37,15 +39,6 @@ const Index = () => {
     }, 3000);
 
     return () => clearInterval(glitchInterval);
-  }, []);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const skills = [
@@ -108,16 +101,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 font-mono relative overflow-hidden">
-      {/* Fixed mouse follower with no lag */}
-      <div 
-        className="fixed w-4 h-4 bg-cyan-400 rounded-full pointer-events-none z-50 mix-blend-difference"
-        style={{
-          left: mousePosition.x - 8,
-          top: mousePosition.y - 8,
-          transform: `scale(${mousePosition.x > 0 ? 1 : 0})`
-        }}
-      />
-
       {/* Terminal Header */}
       <div className="bg-black border-b border-cyan-400 p-4 relative">
         <div className="flex items-center gap-2 text-sm">
@@ -136,48 +119,58 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="p-8 lg:p-16 relative">
-        <div className={`max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="border border-cyan-400 bg-black p-8 mb-8 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 group">
-            <div className="flex items-center gap-4 mb-6">
-              <Terminal className="w-8 h-8 text-cyan-400 group-hover:rotate-12 transition-transform duration-300" />
-              <h1 className="text-4xl lg:text-6xl font-bold text-cyan-400 select-none">
-                {glitchText}
-              </h1>
-            </div>
-            
-            <div className="text-xl lg:text-2xl mb-6">
-              <span className="text-cyan-400">$</span>
-              <span className="text-gray-100 ml-2">whoami</span>
-            </div>
-            
-            <div className="pl-4 border-l border-cyan-400 mb-8 space-y-2">
-              <p className="text-lg text-gray-300 hover:text-cyan-400 transition-colors cursor-default">
-                &gt; Full Stack Developer
-              </p>
-              <p className="text-lg text-gray-300 hover:text-cyan-400 transition-colors cursor-default">
-                &gt; Problem Solver
-              </p>
-              <p className="text-lg text-gray-300 hover:text-cyan-400 transition-colors cursor-default">
-                &gt; Tech Enthusiast
-              </p>
-            </div>
+        <div className={`max-w-7xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="border border-cyan-400 bg-black hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 group">
+            <div className="grid grid-cols-1 lg:grid-cols-5">
+              {/* Left side - Text content */}
+              <div className="p-8 lg:col-span-2">
+                <div className="flex items-center gap-4 mb-6">
+                  <Terminal className="w-8 h-8 text-cyan-400 group-hover:rotate-12 transition-transform duration-300" />
+                  <h1 className="text-4xl lg:text-6xl font-bold text-cyan-400 select-none">
+                    {glitchText}
+                  </h1>
+                </div>
+                
+                <div className="text-xl lg:text-2xl mb-6">
+                  <span className="text-cyan-400">$</span>
+                  <span className="text-gray-100 ml-2">whoami</span>
+                </div>
+                
+                <div className="pl-4 border-l border-cyan-400 mb-8 space-y-2">
+                  <p className="text-lg text-gray-300 hover:text-cyan-400 transition-colors cursor-default">
+                    &gt; Full Stack Developer
+                  </p>
+                  <p className="text-lg text-gray-300 hover:text-cyan-400 transition-colors cursor-default">
+                    &gt; Problem Solver
+                  </p>
+                  <p className="text-lg text-gray-300 hover:text-cyan-400 transition-colors cursor-default">
+                    &gt; Tech Enthusiast
+                  </p>
+                </div>
 
-            <div className="flex flex-wrap gap-4">
-              <Button 
-                className="bg-cyan-400 text-black hover:bg-cyan-300 font-mono hover:scale-105 transition-all duration-200"
-                onClick={() => addTerminalLine("view_projects()")}
-              >
-                <Code className="mr-2 h-4 w-4" />
-                view_projects()
-              </Button>
-              <Button 
-                variant="outline" 
-                className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-mono hover:scale-105 transition-all duration-200"
-                onClick={() => addTerminalLine("contact_me()")}
-              >
-                <Mail className="mr-2 h-4 w-4" />
-                contact_me()
-              </Button>
+                <div className="flex flex-wrap gap-4">
+                  <Button 
+                    className="bg-cyan-400 text-black hover:bg-cyan-300 font-mono hover:scale-105 transition-all duration-200"
+                    onClick={() => addTerminalLine("view_projects()")}
+                  >
+                    <Code className="mr-2 h-4 w-4" />
+                    view_projects()
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-mono hover:scale-105 transition-all duration-200"
+                    onClick={() => addTerminalLine("contact_me()")}
+                  >
+                    <Mail className="mr-2 h-4 w-4" />
+                    contact_me()
+                  </Button>
+                </div>
+              </div>
+
+              {/* Right side - 3D Scene */}
+              <div className="h-[500px] lg:h-auto lg:col-span-3">
+                <SplineSceneBasic />
+              </div>
             </div>
           </div>
         </div>
@@ -371,9 +364,9 @@ const Index = () => {
             <span>patriciojaime@portfolio:~$ </span>
             <span className="animate-pulse">_</span>
           </div>
-        </div>
-      </section>
-    </div>
+          </div>
+        </section>
+      </div>
   );
 };
 
