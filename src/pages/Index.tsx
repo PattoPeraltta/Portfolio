@@ -14,6 +14,7 @@ import FuzzyText from '@/components/ui/FuzzyText'
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showSplashCursor, setShowSplashCursor] = useState(true);
+  const [splashOpacity, setSplashOpacity] = useState(1);
   const [glitchText, setGlitchText] = useState("[YOUR_NAME]");
   const [terminalLines, setTerminalLines] = useState([
     "$ initializing portfolio...",
@@ -44,6 +45,8 @@ const Index = () => {
 
     // Scroll detection
     const handleScroll = () => {
+      const progress = Math.min(window.scrollY / window.innerHeight, 1);
+      setSplashOpacity(1 - progress);
       if (window.scrollY > 50) {
         setShowSplashCursor(false);
       } else {
@@ -52,6 +55,7 @@ const Index = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
 
     return () => {
       clearInterval(glitchInterval);
@@ -87,9 +91,19 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black text-gray-100 font-mono relative overflow-hidden">
+      {/* Animated Grid Background */}
+      <div
+        className="fixed inset-0 -z-10 pointer-events-none"
+        style={{ opacity: splashOpacity, transition: 'opacity 0.5s' }}
+      >
+        <Squares />
+      </div>
+
       {/* Splash Screen */}
-      <div className="h-screen w-full flex items-center justify-center bg-black relative">
-      <Squares />
+      <div
+        className="h-screen w-full flex items-center justify-center bg-black relative"
+        style={{ opacity: splashOpacity, transition: 'opacity 0.5s' }}
+      >
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <TextPressure
             text="PATRICIO"
